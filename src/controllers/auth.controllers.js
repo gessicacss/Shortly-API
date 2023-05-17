@@ -10,7 +10,7 @@ export async function handleSignIn(req, res) {
       user[0].id,
       token,
     ]);
-    res.status(200).send({ name: user[0].name, token });
+    res.status(200).send({ token });
   } catch (err) {
     res.status(500).send(err.message);
   }
@@ -28,6 +28,16 @@ export async function handleSignUp(req, res) {
     );
     res.sendStatus(201);
   } catch (err) {
+    res.status(500).send(err.message);
+  }
+}
+
+export async function handleLogOut(req, res) {
+  const session = res.locals.session;
+  try {
+    await db.query(`DELETE FROM sessions WHERE token=$1`, [session.token])
+    res.sendStatus(200);
+  } catch(err) {
     res.status(500).send(err.message);
   }
 }
