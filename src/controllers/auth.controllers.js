@@ -33,9 +33,9 @@ export async function handleSignUp(req, res) {
 }
 
 export async function handleLogOut(req, res) {
-  const session = res.locals.session;
+  const { token } = res.locals.session;
   try {
-    await db.query(`DELETE FROM sessions WHERE token=$1`, [session.token])
+    await db.query(`DELETE FROM sessions WHERE token=$1`, [token])
     res.sendStatus(200);
   } catch(err) {
     res.status(500).send(err.message);
