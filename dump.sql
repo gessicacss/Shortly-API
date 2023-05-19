@@ -148,6 +148,10 @@ INSERT INTO public.sessions VALUES (1, 1, 'b130d8df-0dc7-494e-b8ba-a9676481027c'
 INSERT INTO public.sessions VALUES (2, 1, 'e8b83120-7a92-401c-9420-abc35d465fae', '2023-05-16 22:52:41.987518');
 INSERT INTO public.sessions VALUES (4, 1, '50b3d311-69dc-4341-87a7-23182fe4ff67', '2023-05-17 21:38:56.265819');
 INSERT INTO public.sessions VALUES (6, 6, 'e92ec9c0-01c4-44c9-ba86-87562e77fd1e', '2023-05-17 22:22:38.752686');
+INSERT INTO public.sessions VALUES (7, 1, '27ba0c47-82b2-4809-9050-ab3269404868', '2023-05-19 17:33:51.358282');
+INSERT INTO public.sessions VALUES (8, 1, 'c0e647ac-6922-41cc-ae87-fab5030cf394', '2023-05-19 17:56:00.885218');
+INSERT INTO public.sessions VALUES (9, 7, '62432649-7dc6-4fb9-b3dc-93a74432b624', '2023-05-19 17:57:15.21628');
+INSERT INTO public.sessions VALUES (10, 7, 'febcc10f-d0ae-4a82-a33d-d3971d133a5d', '2023-05-19 17:58:11.083515');
 
 
 --
@@ -155,6 +159,7 @@ INSERT INTO public.sessions VALUES (6, 6, 'e92ec9c0-01c4-44c9-ba86-87562e77fd1e'
 --
 
 INSERT INTO public.urls VALUES (11, 1, 'u0-zrEXu', 'https://.com', 2, '2023-05-17 22:01:13.891117');
+INSERT INTO public.urls VALUES (12, 1, 'QfPhMhZU', 'https://www.youtube.com/watch?v=aqTcssTfx0s', 0, '2023-05-19 17:33:58.884076');
 
 
 --
@@ -163,27 +168,28 @@ INSERT INTO public.urls VALUES (11, 1, 'u0-zrEXu', 'https://.com', 2, '2023-05-1
 
 INSERT INTO public.users VALUES (1, 'sisi', 'sisi@hotmail.com', '$2b$10$suDz3C9/peNo8yqwx.Im4eSVvJ32Az4yCZEurvF0s8JaYlk4P5hOu', '2023-05-16 22:20:37.708365');
 INSERT INTO public.users VALUES (6, 'sica', 'sica@hotmail.com', '$2b$10$IldgIGdcF1ePwTjFsKJCs.hU6cdEJ5LjoR21Lk/gwaoJdiHjxlBUy', '2023-05-17 22:22:26.656216');
+INSERT INTO public.users VALUES (7, 'ana', 'AnaClara_Reis50@hotmail.com', '$2b$10$2mT9iXEDpa7SMkAImeX00eKK7tCGsT8ew0Nwh09P2g8HFck7HOcQG', '2023-05-19 17:57:06.227847');
 
 
 --
 -- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.sessions_id_seq', 6, true);
+SELECT pg_catalog.setval('public.sessions_id_seq', 10, true);
 
 
 --
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.urls_id_seq', 11, true);
+SELECT pg_catalog.setval('public.urls_id_seq', 12, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 6, true);
+SELECT pg_catalog.setval('public.users_id_seq', 7, true);
 
 
 --
