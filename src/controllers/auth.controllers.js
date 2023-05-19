@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 
 export async function handleSignIn(req, res) {
-  const { user } = res.locals.user;
+  const { user } = res.locals;
   try {
     const token = uuid();
     await db.query(`INSERT INTO sessions ("idUser", token) VALUES ($1, $2)`, [
