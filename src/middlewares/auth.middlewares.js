@@ -1,14 +1,12 @@
 import { db } from "../database/database.connection.js";
 import bcrypt from "bcrypt";
+import { findUserEmail } from "../repositories/auth.repositories.js";
 
 export async function validateSignUpUser(req, res, next){
     const { email } = req.body;
 
     try {
-        const { rowCount: userExists } = await db.query(
-            `SELECT * FROM users WHERE email=$1`,
-            [email]
-          );
+        const { rowCount: userExists } = await findUserEmail(email);
           if (userExists) return res.status(409).send("User already exists");
     
           next();
@@ -21,10 +19,7 @@ export async function validateSignInUser(req, res, next){
     const { email, password } = req.body;
 
     try {
-        const { rows: user, rowCount: userExists} = await db.query(
-            `SELECT * FROM users WHERE email=$1`,
-            [email]
-          );
+        const { rows: user, rowCount: userExists} = await findUserEmail(email);
           if (!userExists) return res.status(401).send(`Check your credentials!`);
           const checkPassword = bcrypt.compareSync(password, user[0].password);
           if (!checkPassword) return res.status(401).send(`Check your credentials!`);

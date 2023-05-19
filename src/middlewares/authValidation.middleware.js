@@ -1,4 +1,5 @@
 import { db } from "../database/database.connection.js";
+import { findUserSession } from "../repositories/auth.repositories.js";
 
 export async function authValidation(req, res, next) {
     const { authorization } = req.headers;
@@ -6,7 +7,7 @@ export async function authValidation(req, res, next) {
     if (!token) return res.sendStatus(401);
 
     try {
-        const session = await db.query(`SELECT * FROM sessions WHERE token=$1`, [token]);
+        const session = await findUserSession(token);
         if (!session.rowCount) return res.sendStatus(401);
 
         res.locals.session = session.rows[0];
