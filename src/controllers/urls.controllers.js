@@ -2,11 +2,11 @@ import { nanoid } from "nanoid";
 import { db } from "../database/database.connection.js";
 
 export async function createUrl(req, res) {
-    const { userId } = res.locals.session;
+    const { idUser } = res.locals.session;
     const { url } = req.body;
     const shortUrl = nanoid(8);
     try {
-        await db.query(`INSERT INTO urls ("idUser", "shortUrl", url) VALUES ($1, $2, $3)`, [userId, shortUrl, url]);
+        await db.query(`INSERT INTO urls ("idUser", "shortUrl", url) VALUES ($1, $2, $3)`, [idUser, shortUrl, url]);
         const urlCreated = await db.query(`SELECT * FROM urls WHERE "shortUrl"=$1`, [shortUrl]);
         const id = urlCreated.rows[0].id;
         res.status(201).send({ id, shortUrl });
@@ -45,13 +45,13 @@ export async function redirectToUrl(req, res) {
 }
 
 export async function deleteUrl(req, res) {
-    const { userId } = res.locals.session;
+    const { idUser } = res.locals.session;
     const { id } = req.params;
     try {
         const { rowCount: shortUrlExists } = await db.query(`SELECT * FROM urls WHERE id=$1`, [id]);
         if (!shortUrlExists) return res.status(404).send(`There's no shortUrl with this id`);
 
-        const { rowCount } = await db.query(`SELECT * FROM urls WHERE "idUser"=$1 AND id=$2`, [userId, id]);
+        const { rowCount } = await db.query(`SELECT * FROM urls WHERE "idUser"=$1 AND id=$2`, [idUser, id]);
         if (!rowCount) return res.status(401).send(`This shortUrl doesn't belong to this user`);
 
         await db.query(`DELETE FROM urls WHERE id=$1`, [id]);
