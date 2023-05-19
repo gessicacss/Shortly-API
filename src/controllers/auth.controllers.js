@@ -6,7 +6,7 @@ export async function handleSignIn(req, res) {
   const { user } = res.locals;
   try {
     const token = uuid();
-    await db.query(`INSERT INTO sessions ("idUser", token) VALUES ($1, $2)`, [
+    await db.query(`INSERT INTO sessions ("userId", token) VALUES ($1, $2)`, [
       user[0].id,
       token,
     ]);
