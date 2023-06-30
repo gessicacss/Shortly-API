@@ -2,7 +2,7 @@
 
 ## About
 
-This project is a URL shortener service with authentication, it was developed using Node.js and PostgreSQL. It allows users to sign up, sign in, shorten URLs, view statistics, and manage their shortened URLs.
+This is a URL shortener service with authentication, it was developed using Node.js and PostgreSQL. It allows users to sign up, sign in, shorten URLs, view statistics, and manage their shortened URLs.
 
 ## Technologies
 
@@ -134,7 +134,7 @@ This is not an authenticated route. It'll show the 10 most visited links, it res
 
 ## How to run
 
-To run this project, you'll have to install PostgreSQL and create a table to acess the database.
+To run this, you'll have to install PostgreSQL and create a table to acess the database.
 
 1. Clone this repository
 2. Install the dependencies
@@ -143,7 +143,7 @@ To run this project, you'll have to install PostgreSQL and create a table to ace
 npm i
 ```
 
-3. Create a **.env** file in the root directory of the project and add the necessary environment variables. This file should not be committed to GitHub for security reasons. It should look like this:
+3. Create a **.env** file in the root directory and add the necessary environment variables. This file should not be committed to GitHub for security reasons. It should look like this:
 
 ```
 DATABASE_URL=postgresql://<username>:<password>@localhost:5432/<database_name>
