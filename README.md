@@ -154,7 +154,7 @@ DATABASE_URL=postgresql://<username>:<password>@localhost:5432/<database_name>
 ```
 
 4. Restore the database dump with the following command:
-5. 
+
 ```
 psql -U <username> -d <database_name> -f dump.sql
 
@@ -162,10 +162,10 @@ Replace <username> with the PostgreSQL username that should be used for the data
 Replace <database_name> with the name of the database where the dump should be restored.
 ```
 
-4. Run the back-end with
+5. Run the back-end with
 
 ```
 npm start
 ```
 
-4. Access http://localhost:5000 on your browser to run the API.
+6. Access http://localhost:5000 on your browser to run the API.
